@@ -4,7 +4,6 @@ import { GLTFLoader } from 'jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'jsm/loaders/RGBELoader.js';
 import {GUI} from 'jsm/libs/lil-gui.module.min.js'
 
-
 const model = 'assets/grid-8d.glb'
 const hdr = 'assets/royal_esplanade_1k.hdr'
 
