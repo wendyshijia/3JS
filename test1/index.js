@@ -57,7 +57,6 @@ light.shadow.mapSize.height = 512; // default
 light.shadow.camera.near = 0.5; // default
 light.shadow.camera.far = 500; // default
 
-
 // env.load( hdr, function ( texture ) {
 
 // 	texture.mapping = THREE.EquirectangularReflectionMapping;
