@@ -20,7 +20,7 @@ const renderer = new THREE.WebGLRenderer({
 	antialias: true
 });
 renderer.setSize(w, h);
-renderer.setClearColor(0x808080);
+renderer.setClearColor(0xFECDAC);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 0.3;
 document.body.appendChild(renderer.domElement); 
@@ -29,13 +29,14 @@ document.body.appendChild(renderer.domElement);
 const fov = 40;
 const aspect = w / h;
 const near = 0.1;
-const far = 1000;
+const far = 900;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
 // const camera = new THREE.OrthographicCamera(fov, aspect, near, far)
-camera.position.set (90,50,90);
+camera.position.set (80,45,80);
 
 // //setup scene
 const scene = new THREE.Scene();
+scene.fog = new THREE.Fog( 0xFECDAC, 80, 140 );
 
 // controls
 const controls = new OrbitControls(camera, renderer.domElement);
