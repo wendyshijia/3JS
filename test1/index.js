@@ -4,7 +4,8 @@ import { GLTFLoader } from 'jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'jsm/loaders/RGBELoader.js';
 import {GUI} from 'jsm/libs/lil-gui.module.min.js'
 
-const model = 'assets/grid-8b.glb'
+
+const model = 'assets/grid-8d.glb'
 const hdr = 'assets/royal_esplanade_1k.hdr'
 
 // Instantiate a loader
@@ -26,12 +27,13 @@ renderer.toneMappingExposure = 0.3;
 document.body.appendChild(renderer.domElement); 
 
 //setup camera
-const fov = 75;
+const fov = 40;
 const aspect = w / h;
 const near = 0.1;
 const far = 1000;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
-camera.position.y = 70;
+// const camera = new THREE.OrthographicCamera(fov, aspect, near, far)
+camera.position.set (90,50,90);
 
 // //setup scene
 const scene = new THREE.Scene();
@@ -46,12 +48,12 @@ controls.update();
 // //add light!
 // const hemiLight = new THREE.HemisphereLight(0xffffff, 0xaa5500, 3);
 // scene.add(hemiLight)
-//Create a DirectionalLight and turn on shadows for the light
-// const light = new THREE.DirectionalLight( 0xffffff, 1 );
+// //Create a DirectionalLight and turn on shadows for the light
+// const light = new THREE.DirectionalLight( 0xffffff, 0.2 );
 // light.position.set( 1, 1, 1 ); //default; light shining from top
 // light.castShadow = true; // default false
 // scene.add( light );
-// //Set up shadow properties for the light
+//Set up shadow properties for the light
 // light.shadow.mapSize.width = 512; // default
 // light.shadow.mapSize.height = 512; // default
 // light.shadow.camera.near = 0.5; // default
