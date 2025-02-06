@@ -1,16 +1,14 @@
 import * as THREE from "three";
 import { OrbitControls } from "jsm/controls/OrbitControls.js";
 import { GLTFLoader } from 'jsm/loaders/GLTFLoader.js';
-import { RGBELoader } from 'jsm/loaders/RGBELoader.js';
+// import { RGBELoader } from 'jsm/loaders/RGBELoader.js';
 import {GUI} from 'jsm/libs/lil-gui.module.min.js'
 
 const model = 'assets/grid-8d.glb'
-const hdr = 'assets/royal_esplanade_1k.hdr'
+// const hdr = 'assets/royal_esplanade_1k.hdr'
 
-// Instantiate a loader
 const loader = new GLTFLoader();
-const env = new RGBELoader();
-// Load a glTF resource
+// const env = new RGBELoader();
 
 // 3 things: renderer, camera, scene
 //renderer
@@ -22,7 +20,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(w, h);
 renderer.setClearColor(0xFECDAC);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 0.3;
+renderer.toneMappingExposure = 1;
 document.body.appendChild(renderer.domElement); 
 
 //setup camera
@@ -46,28 +44,28 @@ controls.update();
 
 
 // //add light!
-// const hemiLight = new THREE.HemisphereLight(0xffffff, 0xaa5500, 3);
-// scene.add(hemiLight)
-// //Create a DirectionalLight and turn on shadows for the light
-// const light = new THREE.DirectionalLight( 0xffffff, 0.2 );
-// light.position.set( 1, 1, 1 ); //default; light shining from top
-// light.castShadow = true; // default false
-// scene.add( light );
-//Set up shadow properties for the light
-// light.shadow.mapSize.width = 512; // default
-// light.shadow.mapSize.height = 512; // default
-// light.shadow.camera.near = 0.5; // default
-// light.shadow.camera.far = 500; // default
+const hemiLight = new THREE.HemisphereLight(0xffffff, 0xaa5500,0.5);
+scene.add(hemiLight)
+//Create a DirectionalLight and turn on shadows for the light
+const light = new THREE.DirectionalLight( 0xffffff,  );
+light.position.set( 1, 1, 1 ); //default; light shining from top
+light.castShadow = true; // default false
+scene.add( light );
+// Set up shadow properties for the light
+light.shadow.mapSize.width = 512; // default
+light.shadow.mapSize.height = 512; // default
+light.shadow.camera.near = 0.5; // default
+light.shadow.camera.far = 500; // default
 
 
-env.load( hdr, function ( texture ) {
+// env.load( hdr, function ( texture ) {
 
-	texture.mapping = THREE.EquirectangularReflectionMapping;
+// 	texture.mapping = THREE.EquirectangularReflectionMapping;
 
-	// scene.background = texture;
-	scene.environment = texture;
-	texture.dispose();
-})
+// 	// scene.background = texture;
+// 	scene.environment = texture;
+// 	texture.dispose();
+// })
 
 loader.load(
 	// resource URL
@@ -95,9 +93,9 @@ loader.load(
 
 
 const gui = new GUI();
-const params = { exposure: 0.3 };
+const params = { exposure: 1 };
 
-gui.add(params, 'exposure', 0.1, 1, 0.1).onChange((value) => {
+gui.add(params, 'exposure', 0, 3, 0.1).onChange((value) => {
     renderer.toneMappingExposure = value;
 });
 
