@@ -224,3 +224,19 @@ function animate(t = 0){
 
 animate();
 
+
+window.addEventListener('resize', () => {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+
+    // Update camera
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+
+    // Update renderer size
+    renderer.setSize(w, h);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Prevents excessive rendering load
+
+    console.log(`Window resized: ${w}x${h}`);
+});
+
