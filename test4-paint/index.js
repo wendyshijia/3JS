@@ -7,7 +7,7 @@ import { EffectComposer } from 'jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'jsm/postprocessing/RenderPass.js';
 
 
-const model = 'assets/valley-1.glb'
+const model = 'assets/valley-3.glb'
 
 // const BGcolor = 0xFECDAC
 const BGcolor = 0xFEE7C2
